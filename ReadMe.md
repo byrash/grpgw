@@ -20,6 +20,12 @@ git submodule sync
 git submodule update --init --recursive --remote
 ```
 
+# Generate Swagger Spec
+```shell
+protoc -I. -I./googleapis --openapiv2_out=. \
+    ./protos/hello.proto
+```
+
 # Run
 ```shell
 go run main.go
