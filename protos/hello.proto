@@ -1,0 +1,22 @@
+syntax = "proto3";
+package helloservice.v1;
+option go_package = "/protos/gen/go/helloservice/v1";
+
+import "googleapis/google/api/annotations.proto";
+
+message GreetMsgReq {
+  string name = 1;
+}
+
+message GreetMsgResp {
+  string message = 1;
+}
+
+service HelloService {
+  rpc Greet(GreetMsgReq) returns (GreetMsgResp) {
+    option (google.api.http) = {
+      post: "/v1/greet"
+      body: "*"
+    };
+  }
+}
